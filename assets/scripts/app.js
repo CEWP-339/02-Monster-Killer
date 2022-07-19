@@ -150,7 +150,52 @@ function healHandler () {
 }
 
 function printLogHandler() {
-    console.log(battleLog);
+
+    // for (let i = 0; i < 3; i++) {
+    //     console.log(i);
+    //     console.log('----------------------');
+    // }
+
+    let j = 0;
+    while (j < 3) {
+        console.log(j); //0
+        console.log('----------------------');
+        j++;
+    }
+
+    let k = 3;
+    outerWhile: do {
+        console.log('Outer While ', k);
+        innerFor: for (let i = 0; i < 5; i++) {
+            if (i === 3) {
+                break outerWhile;
+            }
+            console.log('Inner For ', i);
+        }
+        k--;
+    } while(k > 0);
+
+    // for (let i = 10; i > 0;) {
+    //     i--;
+    //     console.log(i);
+    // }
+
+    // let i = 0;
+    // for (const logEntry of battleLog) {
+    //     console.log(`#${i} =>`);
+    //     console.log(logEntry);
+    //     i++;
+    // }
+
+    let i = 0;
+    for (const logEntry of battleLog) {
+        console.log(`#${i}`);
+        for (const key in logEntry) {
+            console.log(`${key} => ${logEntry[key]}`); //example: logEntry['ev']
+        }
+        i++;
+    }
+
 }
 
 
