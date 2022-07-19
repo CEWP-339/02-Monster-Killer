@@ -11,15 +11,26 @@ const LOG_EVENT_MONSTER_ATTACK = 'MONSTER_ATTACK';
 const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
-
-let enteredNumber = prompt('Enter the maximum life for you and the monster!', '100');
-let chosenMaxLife = parseInt(enteredNumber);
-
 let battleLog = [];
 
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
-    chosenMaxLife = 100;
+function getMaxLifeValues () {
+    const enteredNumber = prompt('Enter the maximum life for you and the monster!');
+    const parsedValue = parseInt(enteredNumber);
+    if (isNaN(parsedValue) || parsedValue <= 0) {
+        throw { message: "Invalid User Input, Not a Number!!" };
+    }
+    return parsedValue;
 }
+
+let chosenMaxLife;
+try {
+    chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+    console.log(error);
+    chosenMaxLife = 100;
+    alert("Since you entered something wrong, default value of 100 was used!");
+}
+
 
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
@@ -156,24 +167,24 @@ function printLogHandler() {
     //     console.log('----------------------');
     // }
 
-    let j = 0;
-    while (j < 3) {
-        console.log(j); //0
-        console.log('----------------------');
-        j++;
-    }
+    // let j = 0;
+    // while (j < 3) {
+    //     console.log(j); //0
+    //     console.log('----------------------');
+    //     j++;
+    // }
 
-    let k = 3;
-    outerWhile: do {
-        console.log('Outer While ', k);
-        innerFor: for (let i = 0; i < 5; i++) {
-            if (i === 3) {
-                break outerWhile;
-            }
-            console.log('Inner For ', i);
-        }
-        k--;
-    } while(k > 0);
+    // let k = 3;
+    // outerWhile: do {
+    //     console.log('Outer While ', k);
+    //     innerFor: for (let i = 0; i < 5; i++) {
+    //         if (i === 3) {
+    //             break outerWhile;
+    //         }
+    //         console.log('Inner For ', i);
+    //     }
+    //     k--;
+    // } while(k > 0);
 
     // for (let i = 10; i > 0;) {
     //     i--;
